@@ -13,3 +13,6 @@ spring:
 #        format_sql: true
 #        use_sql_comments: true
         default_batch_fetch_size: 100
+services:
+  member:
+    url: http://210.113.34.187:9020  # 회원 서비스 URL
