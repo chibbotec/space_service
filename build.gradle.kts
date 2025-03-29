@@ -40,6 +40,9 @@ dependencies {
     //kafka
     implementation("org.springframework.kafka:spring-kafka")
     testImplementation("org.springframework.kafka:spring-kafka-test")
+
+    //actuator 설정
+    implementation ("org.springframework.boot:spring-boot-starter-actuator")
 }
 
 tasks.withType<Test> {
