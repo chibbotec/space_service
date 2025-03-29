@@ -16,19 +16,20 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 @RequiredArgsConstructor
 public class LoginUserArgumentResolver implements HandlerMethodArgumentResolver {
 
-    private final MemberServiceClient memberServiceClient;
+  private final MemberServiceClient memberServiceClient;
 
-    @Override
-    public boolean supportsParameter(MethodParameter parameter) {
-        return parameter.hasParameterAnnotation(LoginUser.class) &&
-            parameter.getParameterType().equals(MemberResponse.class);
-    }
+  @Override
+  public boolean supportsParameter(MethodParameter parameter) {
+    return parameter.hasParameterAnnotation(LoginUser.class) &&
+        parameter.getParameterType().equals(MemberResponse.class);
+  }
 
-    @Override
-    public Object resolveArgument(
-        MethodParameter parameter, ModelAndViewContainer mavContainer,
-        NativeWebRequest webRequest, WebDataBinderFactory binderFactory
-    ) {
+  @Override
+  public Object resolveArgument(
+      MethodParameter parameter, ModelAndViewContainer mavContainer,
+      NativeWebRequest webRequest, WebDataBinderFactory binderFactory
+  ) {
+
 
         String username = webRequest.getHeader("X-Username");
 
@@ -38,12 +39,11 @@ public class LoginUserArgumentResolver implements HandlerMethodArgumentResolver 
         }
 
         try {
-             return memberServiceClient.getMemberByUsername(username);
 
-//            return memberDto;
+             return memberServiceClient.getMemberByUsername(username);
         } catch (NumberFormatException e) {
             log.error("Invalid userId format: {}", username, e);
             return null;
         }
-    }
+  }
 }
