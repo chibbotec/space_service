@@ -78,12 +78,15 @@ public class SpaceService {
     return SpaceResponse.of(space);
   }
 
+  @Transactional
   public SpaceResponse updateSpace(MemberResponse loginUser, Long id, SpaceRequest request) {
     Space space = spaceRepository.findById(id)
         .orElseThrow(() -> new CustomException(ErrorCode.SPACE_NOT_FOUND));
-
+    log.info("spaceid: {}", space.getId());
+    log.info("loginUser: {}", loginUser.getId());
     SpaceMember.MemberRole role = spaceMemberRepository.findRoleBySpaceIdAndMemberId(id,
         loginUser.getId());
+    log.info("role: {}", role);
     if (role != SpaceMember.MemberRole.OWNER &&
         role != SpaceMember.MemberRole.ADMIN) {
       throw new CustomException(ErrorCode.PERMISSION_DENIED);
