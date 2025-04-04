@@ -60,4 +60,12 @@ public class ApiV1SpaceMemberController {
       @PathVariable("userId") Long userId) {
     return ResponseEntity.ok(spaceMemberService.deleteMember(loginUser, spaceId, userId));
   }
+
+  //GET /api/spaces/{id}/members/{userId} - 스페이스 팀원 정보 조회
+  @GetMapping("/{userId}")
+  public ResponseEntity<SpaceMemberResponse> getMemberById(
+      @PathVariable("id") Long spaceId,
+      @PathVariable("userId") Long userId) {
+    return ResponseEntity.ok(spaceMemberService.findSpacesByMemberId(spaceId, userId));
+  }
 }

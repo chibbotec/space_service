@@ -84,4 +84,15 @@ public class SpaceMemberService {
     spaceMemberRepository.delete(spaceMember);
     return "success";
   }
+
+  public SpaceMemberResponse findSpacesByMemberId(Long spaceId, Long userId) {
+    Space space = spaceRepository.findById(spaceId)
+        .orElseThrow(() -> new CustomException(ErrorCode.SPACE_NOT_FOUND));
+
+    SpaceMember spaceMember = spaceMemberRepository.findBySpaceIdAndMemberId(spaceId, userId);
+    if (spaceMember == null) {
+      throw new CustomException(ErrorCode.NOT_FOUND_USER);
+    }
+    return SpaceMemberResponse.of(spaceMember);
+  }
 }
