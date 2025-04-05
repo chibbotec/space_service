@@ -46,7 +46,7 @@ public class ApiV1SpaceController {
       @LoginUser MemberResponse loginUser,
       @RequestParam("type") SpaceType type,
       @RequestBody SpaceRequest request) {
-    return ResponseEntity.ok(spaceService.createSpace(loginUser,type, request));
+    return ResponseEntity.ok(spaceService.createSpace(loginUser, type, request));
   }
 
   //PATCH /api/spaces/{id} - 스페이스 정보 수정

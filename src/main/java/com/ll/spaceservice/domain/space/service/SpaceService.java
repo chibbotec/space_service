@@ -33,7 +33,7 @@ public class SpaceService {
   public SpaceResponse createSpace(MemberResponse loginUser, SpaceType type, SpaceRequest request) {
     Space space = Space.builder()
         .spaceName(request.getSpaceName())
-        .spaceOwner(loginUser.getUsername())
+        .spaceOwner(loginUser.getNickname())
         .type(type)
         .members(new ArrayList<>())
         .build();

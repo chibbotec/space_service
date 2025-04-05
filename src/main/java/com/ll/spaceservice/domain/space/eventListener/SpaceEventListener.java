@@ -21,7 +21,7 @@ public class SpaceEventListener {
       containerFactory = "kafkaListenerContainerFactory"
   )public void consumeSingup(MemberResponse response) {
     SpaceRequest request = SpaceRequest.builder()
-        .spaceName(response.getUsername() + "의 개인 스페이스")
+        .spaceName(response.getNickname() + "의 개인 스페이스")
         .build();
     spaceService.createSpace(response, PERSONAL, request);
   }
