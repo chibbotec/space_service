@@ -41,7 +41,7 @@ public class SpaceService {
     SpaceMember member = SpaceMember.builder()
         .space(space)
         .memberId(loginUser.getId())
-        .nickname(loginUser.getUsername())
+        .nickname(loginUser.getNickname())
         .role(SpaceMember.MemberRole.OWNER)
         .build();
 
