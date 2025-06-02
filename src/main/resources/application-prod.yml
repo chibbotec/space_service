@@ -19,9 +19,6 @@ spring:
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
     consumer:
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-      properties:
-        spring.json.trusted.packages: com.ll.hereispaw.domain.noti.dto.kafka
-        spring.json.use.type.headers: false
 services:
   member:
     url: http://172.30.1.23:9020  # 회원 서비스 URL
