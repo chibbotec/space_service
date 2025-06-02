@@ -1,12 +1,13 @@
 spring:
+  application:
+    name: space
   profiles:
     active: dev
     include: secret
 logging:
   level:
-    com.ll.chatApp: DEBUG
-    org.hibernate.orm.jdbc.bind: TRACE
-    org.hibernate.orm.jdbc.extract: TRACE
+#    org.hibernate.orm.jdbc.bind: TRACE
+#    org.hibernate.orm.jdbc.extract: TRACE
     org.springframework.transaction.interceptor: TRACE
 management:
   endpoints:
@@ -16,3 +17,15 @@ management:
   endpoint:
     health:
       show-details: always
+  info:
+    env:
+      enabled: true
+  # 새로운 Prometheus 설정
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+  # 새로운 태그 설정
+  observations:
+    tags:
+      application: ${spring.application.name}
